@@ -6,9 +6,13 @@ class RackApp
     request = Rack::Request.new(env) # get that request object
     status = 200 # set the status
     headers = {} # object for headers
-
     # make a response object
-    response = {"verb" => request.request_method, "params" => request.params}
+    response = {
+                        "URL" => request.base_url,
+                        "path" => request.fullpath,
+                        "verb" => request.request_method,
+                        "params" => request.params
+                      }
     response_body = ["Heres the request:\n #{response}"]
 
     #  return the response
